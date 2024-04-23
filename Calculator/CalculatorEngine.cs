@@ -3,13 +3,37 @@
 public class CalculatorEngine {
     private static readonly CalculatorResult Result = new CalculatorResult();
     
+    /* Work In Progress
+    private CalculatorResult TestInputValidity(double inputA, double inputB, CalculatorResult originalResult) {
+        if (!inputA.ToString().All(char.IsDigit) || !inputB.ToString().All(char.IsDigit)) {
+            Result.Error = "Invalid Input, Numbers Only";
+            Result.Operation = originalResult.Operation;
+            Result.IsSuccess = false;
+            Result.Result = 0;
+
+            return Result;
+        }
+
+        return originalResult;
+    }
+    */
+
+    private void ClearResult()
+    {
+        Result.Result = 0;
+        Result.Operation = "";
+        Result.Error = "";
+        Result.IsSuccess = false;
+    }
+    
     public CalculatorResult Add(double inputA, double inputB) {
         // preq-ENGINE-3
         Result.Result = inputA + inputB;
         Result.Operation = $"{inputA} + {inputB}";
         Result.Error = null;
         Result.IsSuccess = true;
-        
+
+        // return TestInputValidity(inputA, inputB, Result);
         return Result;
     }
 
@@ -36,17 +60,19 @@ public class CalculatorEngine {
     // Division method. Has logic to catch division by 0
     public CalculatorResult Division(double inputA, double inputB) {
         // preq-ENGINE-7
+        ClearResult();
+        
         Result.Operation = $"{inputA} / {inputB}";
         
         // If input B is 0, that means the user is trying to divide by 0..
         if (inputB == 0) {
             Result.Result = 0;
-            Result.Error = "Error: Cannot divide by 0";
+            Result.Error = "Not a Number";
             Result.IsSuccess = false;
             return Result;
         }
         
-        Result.Result = inputA / inputB;
+        Result.Result = Math.Round(inputA / inputB, 8);
         Result.IsSuccess = true;
         Result.Error = null;
         return Result;

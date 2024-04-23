@@ -79,7 +79,7 @@ public class Tests {
         // Arrange
         double a = 3.0;
         double b = 9.0;
-        double expectedResult = 0.33333333333333331; // Jeff gave 0.33333333 as an answer, do we need to round?
+        double expectedResult = 0.33333333;
 
         // Act
         CalculatorResult result = _sut.Division(a, b);

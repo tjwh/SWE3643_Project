@@ -1,0 +1,78 @@
+/* ####### Custom styles for individual elements ####### */
+
+/* The background of the calculator */
+.calculator {
+    width: 520px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.resultBoxText {
+    font-weight: bold;
+}
+
+/* The text that says "A and B" and "A Only" above the buttons themselves */
+.selectionHeaderText {
+    background-color: #EBEBEB;
+    font-weight: bold;
+}
+
+/* The input boxes where you type your input */
+.inputBox {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* The result field in default state */
+.resultBox {
+    color: #000000;
+    width: 420px;
+    height: 60px;
+    background-color: #FFECD7;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* The result field when an error occurs */
+.resultError {
+    color: #FFFFFF;
+    width: 420px;
+    height: 60px;
+    background-color: #B70F0A;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* ####### HTML element overwrites ####### */
+
+/* Table cell */
+td {
+    padding: 5px 5px;
+    font-size: 15px;
+}
+
+/* Page body */
+body {
+    background-color: #eef1f5;
+}
+
+/* Table (specifically the one housing the calculator) */
+table {
+    margin: auto;
+}
+
+button {
+    width: 100%;
+    background-color: #EBEBEB;
+    color: #000000;
+    padding: 1px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+button:hover {
+    color: #FFFFFF;
+    background-color: #BBBBBB;
+}

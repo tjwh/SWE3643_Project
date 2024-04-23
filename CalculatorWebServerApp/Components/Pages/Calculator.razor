@@ -1,0 +1,104 @@
+@page "/"
+@rendermode InteractiveServer
+
+<!-- Leave this alone. Setup stuff -->
+<head>
+    <link href="Calculator.css" rel="stylesheet" />
+    <title>Calculator</title>
+    <PageTitle>Calculator</PageTitle>   
+</head>
+
+<!-- The calculator itself -->
+<div class="calculator">
+    <table>
+        
+        <!-- Top row with Calculator text and Clear button -->
+        <tr>
+            <h1>Calculator</h1>
+            <td><button @onclick ="ClearResult">Clear</button></td>
+        </tr>
+            
+        <!-- Results box -->
+        <tr class="@ResultStyle">
+            <td colspan="2">
+                <div>
+                    @if (_result == null) {
+                        <span>Enter values(s) below and select an operation.</span>
+                    }
+                    
+                    else if (_result.IsSuccess) {
+                        <span>@_result.Operation =</span>
+                        <span><br/>@_result.Result</span>
+                    }
+                    
+                    else if (!_result.IsSuccess) {
+                        <span>@_result.Operation =</span>
+                        <span><br/>@_result.Error</span>
+                    }
+                </div>
+            </td>
+        </tr>
+
+        <!-- Headers for input boxes -->
+        <tr>
+            <th>Input A</th>
+            <th>Input B</th>
+        </tr>
+            
+        <!-- Input boxes -->
+        <tr>
+            <td>
+                <input type="text" class="inputBox" @bind="_inputA"/>
+            </td>
+            <td>
+                <input type="text" class="inputBox" @bind="_inputB"/>
+            </td>
+        </tr>
+            
+        <!-- Header for operation buttons -->
+        <tr class="selectionHeaderText">
+            <div>
+                <td>A and B</td>
+                <td>A only</td>
+            </div>
+        </tr>
+            
+        <!-- All of the operation buttons -->
+        <tr>
+            <td><button @onclick="Add">A + B</button></td>
+            <td><button @onclick="Factorial">A !</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Subtract">A - B</button></td>
+            <td><button @onclick="Sine">sin A</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Multiplication">A * B</button></td>
+            <td><button @onclick="Cosine">cos A</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Division">A / B</button></td>
+            <td><button @onclick="Tangent">tan A</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Equals">A == B</button></td>
+            <td><button @onclick="Reciprocal">1 / A</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Power">A ^ B</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Logarithm">A log B</button></td>
+        </tr>
+        
+        <tr>
+            <td><button @onclick="Root">A root B</button></td>
+        </tr>
+    </table>
+</div>
