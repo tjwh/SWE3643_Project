@@ -30,7 +30,7 @@ public class Tests {
         });
         Assert.Pass($"{result.Operation} = {expectedResult} | Operation Success: {result.IsSuccess}");
     }
-    
+
     [Test]
     public void Calculator_Subtraction_ShouldReturnDifferenceOfTwoFloatingPointValues() {
         // preq-UNIT-TEST-3

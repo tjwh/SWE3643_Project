@@ -2,21 +2,6 @@
 
 public class CalculatorEngine {
     private static readonly CalculatorResult Result = new CalculatorResult();
-    
-    /* Work In Progress
-    private CalculatorResult TestInputValidity(double inputA, double inputB, CalculatorResult originalResult) {
-        if (!inputA.ToString().All(char.IsDigit) || !inputB.ToString().All(char.IsDigit)) {
-            Result.Error = "Invalid Input, Numbers Only";
-            Result.Operation = originalResult.Operation;
-            Result.IsSuccess = false;
-            Result.Result = 0;
-
-            return Result;
-        }
-
-        return originalResult;
-    }
-    */
 
     private void ClearResult()
     {
@@ -28,12 +13,11 @@ public class CalculatorEngine {
     
     public CalculatorResult Add(double inputA, double inputB) {
         // preq-ENGINE-3
-        Result.Result = inputA + inputB;
         Result.Operation = $"{inputA} + {inputB}";
+        Result.Result = inputA + inputB;
         Result.Error = null;
         Result.IsSuccess = true;
-
-        // return TestInputValidity(inputA, inputB, Result);
+        
         return Result;
     }
 

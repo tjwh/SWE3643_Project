@@ -1,12 +1,24 @@
 using Calculator;
+using System.Text.RegularExpressions;
 namespace CalculatorWebServerApp.Components.Pages;
 
 public partial class Calculator
 {
     private CalculatorResult? _result = new CalculatorResult();
-    private double _inputA;
-    private double _inputB;
+    private string _inputA;
+    private string _inputB;
 
+    // Helper method to test if our input contains anything but numbers, ., or -.
+    private bool TestInputValidity(string input) {
+        string pattern = @"^[0-9\.\-]+$";
+        
+        if (Regex.IsMatch(input, pattern)) {
+            return true;
+        }
+
+        return false;
+    }
+    
     // Method for handling the changing style of the Result Box. Thanks, Jeff :^)
     private string ResultStyle {
         get {
@@ -25,59 +37,122 @@ public partial class Calculator
     // Clears our result, all visual changes are handled via HTML binding and embedded code
     private void ClearResult() {
         _result = null;
-        _inputA = 0;
-        _inputB = 0;
+        _inputA = "0";
+        _inputB = "0";
     }
     
-    private void Add() {
-        _result = _calculatorEngine.Add(_inputA, _inputB);
+    // Helper method to quickly setup Invalid Input returns
+    private CalculatorResult InvalidInputCreator(string operation) {
+        return new CalculatorResult {
+            Result = 0,
+            IsSuccess = false,
+            Operation = operation,
+            Error = "Invalid Input: Numbers Only"
+        };
+    }
+    
+    private void Add()
+    {
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Add(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} + {_inputB}");
     }
 
     private void Subtract() {
-        _result = _calculatorEngine.Subtraction(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Subtraction(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} - {_inputB}");
     }
 
     private void Multiplication() {
-        _result = _calculatorEngine.Multiplication(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Multiplication(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} * {_inputB}");
     }
 
     private void Division() {
-        _result = _calculatorEngine.Division(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Division(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} / {_inputB}");
     }
 
     private void Equals() {
-        _result = _calculatorEngine.Equals(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Equals(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} == {_inputB}");
     }
 
     private void Power() {
-        _result = _calculatorEngine.Power(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Power(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} ^ {_inputB}");
     }
 
     private void Logarithm() {
-        _result = _calculatorEngine.Logarithm(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Logarithm(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} log {_inputB}");
     }
 
     private void Root() {
-        _result = _calculatorEngine.Root(_inputA, _inputB);
+        if (TestInputValidity(_inputA) && TestInputValidity(_inputB)) {
+            _result = _calculatorEngine.Root(Convert.ToDouble(_inputA), Convert.ToDouble(_inputB));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} root {_inputB}");
     }
 
     private void Factorial() {
-        _result = _calculatorEngine.Factorial(_inputA);
+        if (TestInputValidity(_inputA)) {
+            _result = _calculatorEngine.Factorial(Convert.ToDouble(_inputA));
+        }
+
+        else _result = InvalidInputCreator($"{_inputA} !");
     }
 
     private void Sine() {
-        _result = _calculatorEngine.Sine(_inputA);
+        if (TestInputValidity(_inputA)) {
+            _result = _calculatorEngine.Sine(Convert.ToDouble(_inputA));
+        }
+
+        else _result = InvalidInputCreator($"sin({_inputA})");
     }
 
     private void Cosine() {
-        _result = _calculatorEngine.Cosine(_inputA);
+        if (TestInputValidity(_inputA)) {
+            _result = _calculatorEngine.Cosine(Convert.ToDouble(_inputA));
+        }
+
+        else _result = InvalidInputCreator($"cos({_inputA})");
     }
 
     private void Tangent() {
-        _result = _calculatorEngine.Tangent(_inputA);
+        if (TestInputValidity(_inputA)) {
+            _result = _calculatorEngine.Tangent(Convert.ToDouble(_inputA));
+        }
+
+        else _result = InvalidInputCreator($"tan({_inputA})");
     }
 
     private void Reciprocal() {
-        _result = _calculatorEngine.Reciprocal(_inputA);
+        if (TestInputValidity(_inputA)) {
+            _result = _calculatorEngine.Reciprocal(Convert.ToDouble(_inputA));
+        }
+
+        else _result = InvalidInputCreator($"1 / {_inputA}");
     }
 }
