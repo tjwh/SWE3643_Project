@@ -41,7 +41,7 @@ public class Tests : PageTest
         //Fill input boxes
         await Page.GetByRole(AriaRole.Textbox, new() { NameString = "inputBoxA" }).FillAsync("5");
         await Page.GetByRole(AriaRole.Textbox, new() { NameString = "inputBoxB" }).FillAsync("0");
-        //Click the add operation
+        //Click the division operation
         await Page.GetByRole(AriaRole.Button, new() { NameString = "A / B" }).ClickAsync();
 
         //check that the proper output is displayed

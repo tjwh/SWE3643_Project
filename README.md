@@ -126,4 +126,4 @@ Duration: 1 s - CalculatorPlaywrightTests.dll (net8.0)
 ```
 
 ## Final Video Presentation
-...
+[![Video Link](https://i.imgur.com/LsmM3Se.png)](https://www.youtube.com/watch?v=k0-N-1a8jpw)
