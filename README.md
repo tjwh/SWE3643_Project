@@ -1,6 +1,6 @@
 # KSU SWE 3643 Software Testing and Quality Assurance Semester Project: Web-Based Calculator
 Contained here is a web-based calculator built using C# and Blazor. NUnit is used for unit tests and
-playwright is used for end-to-end testing.
+Playwright is used for end-to-end testing.
 
 ## Table of Contents
 - [Environment](#environment)
@@ -44,7 +44,21 @@ To prepare your environment to execute this application:
 `git clone https://github.com/tjwh/SWE3643_Project.git`
 
 To configure Playwright for end-to-end testing:
-* ...
+* Open up a terminal and navigate to the repository's main project folder.
+
+`cd <directory>\SWE3643_Project`
+
+* Build the project.
+
+`dotnet build`
+
+* Navigate to the repository's CalculatorPlaywrightTests folder.
+
+`cd CalculatorPlaywrightTests`
+
+* Install the required Playwright browsers.
+
+`pwsh bin/Debug/net8.0/playwright.ps1 install`
 
 ## Executing the Web Application
 To execute the web application: 
@@ -71,9 +85,9 @@ info: Microsoft.Hosting.Lifetime[0]
 ## Executing Unit Tests
 To execute the unit tests:
 
-* Open up a terminal and navigate to the repository's folder.
+* Open up a terminal and navigate to the CalculatorUnitTests folder.
 
-`cd <directory>\SWE3643_Project`
+`cd <directory>\SWE3643_Project\CalculatorUnitTests`
 
 * Run the tests.
 
@@ -93,7 +107,23 @@ Duration: 97 ms - CalculatorUnitTests.dll (net8.0)
 ![Coverage Statistics](https://i.imgur.com/d1CNSxQ.png)
 
 ## Executing End-To-End Tests
-...
+* Open up a terminal and navigate to the CalculatorPlaywrightTests folder.
+
+`cd <directory>\SWE3643_Project\CalculatorPlaywrightTests`
+
+* Run the tests.
+
+`dotnet test`
+
+* Upon a successful run, your console should output the following:
+```
+$ dotnet test
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+
+Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5,
+Duration: 1 s - CalculatorPlaywrightTests.dll (net8.0)
+```
 
 ## Final Video Presentation
 ...
