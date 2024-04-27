@@ -101,14 +101,14 @@ public class CalculatorEngine {
         
         if (inputA <= 0) {
             Result.Result = 0;
-            Result.Error = "Error: A cannot be equal to or less than 0";
+            Result.Error = "Not a Number";
             Result.IsSuccess = false;
             return Result;
         }
         
         if (inputB == 0) {
             Result.Result = 0;
-            Result.Error = "Error: B cannot be equal to 0";
+            Result.Error = "Not a Number";
             Result.IsSuccess = false;
             return Result;
         }
@@ -126,7 +126,7 @@ public class CalculatorEngine {
         
         if (inputB == 0) {
             Result.Result = 0;
-            Result.Error = "Error: B cannot be equal to 0";
+            Result.Error = "Not a Number";
             Result.IsSuccess = false;
             return Result;
         }
@@ -197,7 +197,7 @@ public class CalculatorEngine {
         {
             Result.Result = 0;
             Result.IsSuccess = false;
-            Result.Error = "Error: A cannot be 0";
+            Result.Error = "Not a Number";
             return Result;
         }
         
