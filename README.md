@@ -56,9 +56,13 @@ To configure Playwright for end-to-end testing:
 
 `cd CalculatorPlaywrightTests`
 
-* Install the required Playwright browsers.
+* Install the required Playwright browsers (for Windows).
 
 `pwsh bin/Debug/net8.0/playwright.ps1 install`
+
+* __NOTE: If you do not have Powershell installed, install it using the following command:__
+
+`winget install --id Microsoft.Powershell --source winget`
 
 ## Executing the Web Application
 To execute the web application: 
@@ -107,7 +111,7 @@ Duration: 97 ms - CalculatorUnitTests.dll (net8.0)
 ![Coverage Statistics](https://i.imgur.com/d1CNSxQ.png)
 
 ## Executing End-To-End Tests
-* Open up a terminal and navigate to the CalculatorPlaywrightTests folder.
+* With the web server app already running, open up a terminal and navigate to the CalculatorPlaywrightTests folder.
 
 `cd <directory>\SWE3643_Project\CalculatorPlaywrightTests`
 
@@ -124,6 +128,8 @@ A total of 1 test files matched the specified pattern.
 Passed!  - Failed:     0, Passed:     5, Skipped:     0, Total:     5,
 Duration: 1 s - CalculatorPlaywrightTests.dll (net8.0)
 ```
+
+* __NOTE: For some reason, one of the End to End tests may fail when running it for the first time. Run them again and they all should pass.__
 
 ## Final Video Presentation
 [![Video Link](https://i.imgur.com/LsmM3Se.png)](https://www.youtube.com/watch?v=k0-N-1a8jpw)
